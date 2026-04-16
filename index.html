@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harmony Habits — Natural Wellness & Herbal Living</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- NAV -->
+<div class="topnav" id="topnav">
+  <div class="logo" onclick="goPublic()">Harmony <span>Habits</span></div>
+  <div class="nr" id="navr"></div>
+</div>
+<!-- NOTES PANEL -->
+<div class="notes-p" id="notesp"><h4>&#128221; Notes <button style="background:none;border:none;cursor:pointer;font-size:16px;color:var(--t3)" onclick="toggleNotes()">&times;</button></h4><textarea id="notesarea" placeholder="Your notes..." oninput="saveNotes()"></textarea></div>
+<!-- LOGIN -->
+<div class="mbg" id="loginmod"><div class="mbox"><h2>Welcome back</h2><p>Log in to your account</p><div class="fg"><label>Email</label><input type="email" id="le" placeholder="your@email.com"></div><div class="fg"><label>Password</label><input type="password" id="lp" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"></div><div class="lerr" id="lerr"></div><button class="bfull" onclick="doLogin()">Log in</button><p style="font-size:12px;color:var(--t3);margin-top:12px;cursor:pointer" onclick="closeLogin()">Cancel</p></div></div>
+<!-- WORKSHOP EMAIL MODAL -->
+<div class="mbg" id="wsmod"><div class="mbox"><h2>Reserve your spot</h2><p id="wsmodtitle"></p><div class="fg"><label>Your name</label><input id="ws-name" placeholder="Full name"></div><div class="fg"><label>Email</label><input type="email" id="ws-email" placeholder="your@email.com"></div><div class="lerr" id="wserr"></div><button class="bfull" onclick="bookWS()">Reserve spot</button><p style="font-size:12px;color:var(--t3);margin-top:12px;cursor:pointer" onclick="document.getElementById('wsmod').classList.remove('open')">Cancel</p></div></div>
+
+<!-- PUBLIC PAGE -->
+<div class="page active" id="pg-public">
+<section class="hero"><div class="hero-inner">
+<div class="hb">&#127807; Natural wellness, simplified</div>
+<h1>Your guide to <em>herbal living</em> &amp; natural wellbeing</h1>
+<p>Discover medicinal plants, prepare healing recipes, and build daily wellness habits — all in one beautiful app.</p>
+<div class="hbtns"><a class="pri" onclick="CU?showPage(CU.role==='admin'?'admin':'user'):openLogin()">Start free trial</a><a class="sec2" onclick="scrollTo2('#features')">See what's inside</a></div>
+<div class="phones"><div class="ph" style="transform:rotate(-3deg)"><div class="phb"></div><div class="phi"><div class="phi-t">&#127807; Chamomile</div><div class="phi-s">Calming · Digestive</div><div class="phi-tag">Spring</div></div><div class="phi"><div class="phi-t">&#127807; Lavender</div><div class="phi-s">Relaxant · Skin</div><div class="phi-tag">Summer</div></div><div class="phi"><div class="phi-t">&#127807; Turmeric</div><div class="phi-s">Anti-inflammatory</div><div class="phi-tag">Year-round</div></div></div><div class="ph" style="transform:rotate(2deg);margin-top:20px"><div class="phb"></div><div class="phi" style="background:var(--acl)"><div class="phi-t">&#127861; Anti-stress Tea</div><div class="phi-s">Chamomile + Valerian</div><div class="phi-tag">Easy · 10 min</div></div><div class="phi"><div class="phi-t">&#128221; Wellness Diary</div><div class="phi-s">How are you feeling?</div><div class="phi-tag">7-day streak!</div></div><div class="phi"><div class="phi-t">&#127942; Badge unlocked!</div><div class="phi-s">Explorer — 20 plants</div></div></div></div>
+</div></section>
+
+<section class="sec" id="features"><div class="sl2">The App</div><div class="st3">Everything for natural wellness</div><div class="sd">Plant identification, healing recipes, wellness tracking and evidence-based herbal information.</div>
+<div class="g3"><div class="fc"><div class="fi" style="background:var(--acl)">&#127807;</div><h3>Plant encyclopaedia</h3><p>Detailed profiles with growing guides, properties, and safety info.</p></div><div class="fc"><div class="fi" style="background:var(--wb)">&#127861;</div><h3>Healing recipes</h3><p>Step-by-step recipes with therapeutic info and scientific backing.</p></div><div class="fc"><div class="fi" style="background:var(--pb)">&#128221;</div><h3>Wellness diary</h3><p>Track mood, energy, and habits. Build streaks.</p></div><div class="fc"><div class="fi" style="background:var(--pkb)">&#127942;</div><h3>Earn badges</h3><p>Unlock achievements as you explore and learn.</p></div><div class="fc"><div class="fi" style="background:var(--ib)">&#9888;&#65039;</div><h3>Safety alerts</h3><p>Automatic warnings about interactions.</p></div><div class="fc"><div class="fi" style="background:var(--sb)">&#128218;</div><h3>Daily tips</h3><p>Curated tips and seasonal wellness insights.</p></div></div></section>
+
+<section class="sec" id="workshops"><div class="sl2">Workshops</div><div class="st3">Learn with us, hands-on</div><div class="sd">Live online workshops led by herbalists. Limited spots.</div>
+<div class="g2" id="ws-grid"></div></section>
+
+<section class="sec" id="kits"><div class="sl2">Kits</div><div class="st3">Everything you need, delivered</div><div class="sd">Curated kits with premium seeds, tools, and instructions.</div>
+<div class="g3"><div class="kc"><div class="kid"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Product image — Seed starter kit</span></div><div class="kbd"><h3>Seed starter kit</h3><p>6 seed varieties, pots, and guide.</p><div class="knd">Chamomile, Lavender, Peppermint, Lemon Balm, Echinacea, Valerian · 12 pots · Guide</div><div class="kfd"><div class="kpd">&pound;24.99</div><button class="kbt" onclick="toast('Seed starter kit added to cart!')">Add to cart</button></div></div></div><div class="kc"><div class="kid"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Product image — Propagation kit</span></div><div class="kbd"><h3>Propagation kit</h3><p>Multiply plants through cuttings.</p><div class="knd">Rooting powder · 8 pots · Humidity dome · Tool · Booklet</div><div class="kfd"><div class="kpd">&pound;19.99</div><button class="kbt" onclick="toast('Propagation kit added to cart!')">Add to cart</button></div></div></div><div class="kc"><div class="kid"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Product image — Tea blending kit</span></div><div class="kbd"><h3>Tea blending kit</h3><p>Premium herbs, strainer, recipe cards.</p><div class="knd">8 herbs · Glass strainer · Tin · 12 recipe cards · Dosage guide</div><div class="kfd"><div class="kpd">&pound;34.99</div><button class="kbt" onclick="toast('Tea blending kit added to cart!')">Add to cart</button></div></div></div></div></section>
+
+<section id="subscribe"><div class="subs"><div class="sl2">Subscribe</div><div class="st3">Choose your plan</div><p style="font-size:15px;color:var(--t2);max-width:480px;margin:0 auto">Start free, upgrade anytime.</p>
+<div class="spg"><div class="spc"><div class="spn">Free</div><div class="spp">&pound;0</div><ul class="spf"><li>50+ plants</li><li>10 recipes</li><li>Wellness diary</li><li>Daily tips</li></ul><button class="spbt spbt-o" onclick="openLogin()">Get started</button></div><div class="spc pop"><div class="spb">Most popular</div><div class="spn">Premium</div><div class="spp">&pound;9.99 <span>/mo</span></div><ul class="spf"><li>180+ plants</li><li>90+ recipes</li><li>Safety alerts</li><li>Workshop discounts</li><li>Badges</li><li>Ad-free</li></ul><button class="spbt spbt-p" onclick="openLogin()">Start free trial</button></div><div class="spc"><div class="spn">Annual</div><div class="spp">&pound;79.99 <span>/yr</span></div><ul class="spf"><li>Everything Premium</li><li>Save 33%</li><li>1 free workshop</li><li>Exclusive kits</li><li>Priority support</li></ul><button class="spbt spbt-o" onclick="openLogin()">Save 33%</button></div></div></div></section>
+
+<footer><div class="ftg"><div><div class="ftb">Harmony Habits</div><div class="ftd">Natural wellness, evidence-based, beautifully designed.</div></div><div class="ftc"><h4>App</h4><a onclick="toast('Coming soon to the App Store!')">iOS</a><a onclick="toast('Coming soon to Google Play!')">Android</a><a onclick="scrollTo2('#features')">Features</a></div><div class="ftc"><h4>Learn</h4><a onclick="scrollTo2('#workshops')">Workshops</a><a onclick="scrollTo2('#features')">Blog</a><a onclick="scrollTo2('#features')">Tips</a></div><div class="ftc"><h4>Company</h4><a onclick="toast('About page coming soon')">About</a><a onclick="toast('Contact: hello@harmonyhabits.co.uk')">Contact</a><a onclick="toast('Privacy policy coming soon')">Privacy</a></div></div><div class="ftbt">&copy; 2025 Harmony Habits</div></footer>
+</div>
+
+<!-- USER PAGE -->
+<div class="page" id="pg-user"><div class="dw"><div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap"><div class="av" style="width:56px;height:56px;font-size:18px;background:var(--acl);color:var(--ac)" id="u-av">MS</div><div><h2 style="font-family:var(--fd);font-size:22px;font-weight:400" id="u-nm"></h2><p style="font-size:13px;color:var(--t2)" id="u-em"></p></div><div style="margin-left:auto"><button class="btn-o btn-sm" onclick="doLogout()">Log out</button></div></div><div class="ptabs" id="utabs"></div><div id="ucont"></div></div></div>
+
+<!-- ADMIN PAGE -->
+<div class="page" id="pg-admin"><div class="dw"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px"><h2 style="font-family:var(--fd);font-size:22px;font-weight:400">Admin dashboard</h2><div style="display:flex;gap:8px"><button class="notes-btn" onclick="toggleNotes()">&#128221; Notes</button><button class="btn-o btn-sm" onclick="doLogout()">Log out</button></div></div><div class="atabs" id="atabs"></div><div id="acont"></div></div></div>
+
+<div class="mo" id="modal"><div class="md"><h3 id="mt"></h3><div id="mf"></div><div class="ma" id="mact"></div></div></div>
+<div class="toast" id="toast"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
